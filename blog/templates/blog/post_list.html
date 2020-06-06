@@ -1,21 +1,12 @@
-<html>
-    <head>
-        <title>Arpita's Blog</title>
-    </head>
-    <body>
-	<div>
-	    <h1>WELCOME TO ARPITA'S BLOG</h1>
-		<h2>A Journey from nothing to everything</h2>
-        <p>Hi there! This is my first attempt at writing a blog. Way to utilize lockdown boredome right!!<br> It's just about tid-bits from my daily life.</p>
-        <em>All the content posted here is my personel experience.</em>
-		<strong>Names mentioned in this and every other blog might be different from actual names of people.<br> This is just to respect everyone's privacy</strong>
-    </div>
-{% for post in posts %}
-    <div>
-        <p>published: {{ post.published_date }}</p>
-        <h2><a href="">{{ post.title }}</a></h2>
-        <p>{{ post.text|linebreaksbr }}</p>
-    </div>
-{% endfor %}
-	</body>
-</html>
+    {% extends 'blog/base.html' %}    
+		{% block content %}    
+			{% for post in posts %}
+                <div class="post">
+                    <div class="date">
+                        <p>published: {{ post.published_date }}</p>
+                    </div>
+                    <h2><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
+                    <p>{{ post.text|linebreaksbr }}</p>
+                </div>
+            {% endfor %}
+        {% endblock %}
