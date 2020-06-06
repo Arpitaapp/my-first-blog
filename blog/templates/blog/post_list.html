@@ -10,10 +10,12 @@
         <em>All the content posted here is my personel experience.</em>
 		<strong>Names mentioned in this and every other blog might be different from actual names of people.<br> This is just to respect everyone's privacy</strong>
     </div>
-	<div>
-	    <h1> This is the link <a href="">https://djangogirls.org</a> where i learned to create website.<br> First website!!!<br>Of course,i'm proud of myself.Nothing makes me feel better than being productive:)</h1>
-	    <h1>Three mantras for Success:</h1>
-		<ul><li>Passion</li><li>Persistance</li><li>Preseverance</li></ul>
-	</div>
+	    {% for post in posts %}
+    <div>
+        <p>published: {{ post.published_date }}</p>
+        <h2><a href="">{{ post.title }}</a></h2>
+        <p>{{ post.text|linebreaksbr }}</p>
+    </div>
+{% endfor %}
 	</body>
 </html>
